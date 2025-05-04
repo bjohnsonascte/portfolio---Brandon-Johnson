@@ -7,52 +7,49 @@ import {
     SimpleGrid,
     HStack,
     Tag,
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
     useColorModeValue,
-  } from '@chakra-ui/react';
+  } from "@chakra-ui/react";
   
   const skills = [
-    'React',
-    'Docker',
-    'AWS',
-    'Kali Linux',
-    'T-Pot',
-    'Wazuh',
-    'Node.js',
-    'Chakra UI',
-    'Python',
+    "React",
+    "Docker",
+    "AWS",
+    "Kali Linux",
+    "Splunk",
+    "T-Pot",
+    "Wazuh",
+    "Python",
+    "VMware",
+    "Office 365",
+    "Networking",
+    "Linux",
   ];
   
   const projects = [
     {
-      title: 'Red Team Lab',
-      description: 'Kali, T-Pot honeypots, and detection VMs.',
+      title: "Cyber Range Dashboard",
+      description: "Real-time Wazuh + ELK visual dashboard to track student attack data and SOC logs.",
     },
     {
-      title: 'Cyber Range Dashboard',
-      description: 'Real-time Wazuh + ELK dashboard with maps.',
+      title: "Red Team Lab Setup",
+      description: "Hands-on labs using Kali Linux, T-Pot honeypots, and simulated victims to teach attacks & detection.",
     },
     {
-      title: 'Framework Quiz App',
-      description: 'Quiz that maps to NICE Framework + DynamoDB.',
+      title: "Bootcamp Capstone — Secure Web App",
+      description: "Built and secured a blog platform, implemented access controls and tested vulnerabilities.",
     },
     {
-      title: 'Rogue Access Point Lab',
-      description: 'Fake AP MITM with sniffing/spoofing demos.',
+      title: "Rekall Corporation Pentest",
+      description: "Simulated penetration test against Windows & Linux infrastructure with full report writing.",
     },
   ];
   
   const Home = () => {
-    const cardBg = useColorModeValue('white', 'gray.700');
-    const textColor = useColorModeValue('gray.800', 'gray.100');
-    const sectionBg = useColorModeValue('gray.50', 'gray.900');
+    const cardBg = useColorModeValue("white", "gray.700");
+    const textColor = useColorModeValue("gray.700", "gray.200");
   
     return (
-      <Box bg={sectionBg} p={4} borderRadius="md">
+      <Box>
         <Heading size="2xl" mb={2} color={textColor}>
           Brandon Johnson
         </Heading>
@@ -60,7 +57,13 @@ import {
           Cybersecurity Educator • Red Team Builder • AI Explorer
         </Text>
   
-        {/* Skills */}
+        <Heading size="lg" mb={2} color={textColor}>
+          About Me
+        </Heading>
+        <Text mb={6} color={textColor}>
+          I build and teach cybersecurity labs with real-world tools and threats. My work combines hands-on red team tactics, dashboards, and automation to train the next generation of defenders.
+        </Text>
+  
         <Heading size="lg" mb={2} color={textColor}>
           Skills & Tools
         </Heading>
@@ -72,7 +75,6 @@ import {
           ))}
         </HStack>
   
-        {/* Project Cards */}
         <Heading size="lg" mb={4} color={textColor}>
           Featured Projects
         </Heading>
@@ -81,13 +83,14 @@ import {
             <Box
               key={i}
               p={6}
-              bg={cardBg}
+              borderWidth="1px"
               borderRadius="lg"
               shadow="md"
+              bg={cardBg}
               _hover={{
-                transform: 'scale(1.03)',
-                boxShadow: 'lg',
-                transition: '0.2s ease-in-out',
+                transform: "scale(1.03)",
+                boxShadow: "lg",
+                transition: "0.2s ease-in-out",
               }}
             >
               <VStack align="start" spacing={2}>
@@ -97,36 +100,6 @@ import {
             </Box>
           ))}
         </SimpleGrid>
-  
-        {/* Accordion Summary */}
-        <Heading size="lg" mb={4} color={textColor}>
-          Quick Summary
-        </Heading>
-        <Accordion allowToggle>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">Projects</Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              Red Team Lab, Cyber Range Dashboard, NICE Quiz App, Rogue AP Lab
-            </AccordionPanel>
-          </AccordionItem>
-  
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">Experience</Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              ASCTE Cybersecurity Instructor, AI Lab Coach, Freelance Builder
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
       </Box>
     );
   };
