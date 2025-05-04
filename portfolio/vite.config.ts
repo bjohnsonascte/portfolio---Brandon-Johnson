@@ -9,13 +9,13 @@ const __dirname = dirname(__filename);
 
 // Important: matches your GitHub repo name
 export default defineConfig({
-  base: '/portfolio/', // 👈 this must match your GitHub repo name exactly
+  base: "/portfolio/", // for GitHub Pages under /portfolio/
   plugins: [react()],
   resolve: {
     alias: {
-      pages: path.resolve(__dirname, 'src/pages'),
-      assets: path.resolve(__dirname, 'src/assets'),
-      components: path.resolve(__dirname, 'src/components'),
+      pages: path.resolve(__dirname, "src/pages"),
+      assets: path.resolve(__dirname, "src/assets"),
+      components: path.resolve(__dirname, "src/components"),
     },
   },
 });

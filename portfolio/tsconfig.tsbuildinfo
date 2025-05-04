@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/projectmodal.tsx","./src/components/resumemodal.tsx","./src/components/timeline.tsx","./src/pages/about.tsx","./src/pages/blog.tsx","./src/pages/experience.tsx","./src/pages/home.tsx","./src/types/github-calendar.d.ts"],"version":"5.7.3"}
