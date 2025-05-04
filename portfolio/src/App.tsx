@@ -14,6 +14,7 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
+import Blog from "./pages/Blog";
 
 const App = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <Box minH="100vh" bg={bg}>
       <Box maxW="1000px" mx="auto" px={6}>
+
         {/* Sticky Navbar with Avatar & Toggle */}
         <Box
           position="sticky"
@@ -39,36 +41,21 @@ const App = () => {
           <HStack justify="space-between">
             {/* Navigation Links */}
             <HStack spacing={4}>
-              <Link
-                to="/"
-                style={{
-                  fontWeight: location.pathname === "/" ? "bold" : "normal",
-                  color: textColor,
-                }}
-              >
+              <Link to="/" style={{ fontWeight: location.pathname === "/" ? "bold" : "normal", color: textColor }}>
                 Home
               </Link>
-              <Link
-                to="/about"
-                style={{
-                  fontWeight: location.pathname === "/about" ? "bold" : "normal",
-                  color: textColor,
-                }}
-              >
+              <Link to="/about" style={{ fontWeight: location.pathname === "/about" ? "bold" : "normal", color: textColor }}>
                 About
               </Link>
-              <Link
-                to="/experience"
-                style={{
-                  fontWeight: location.pathname === "/experience" ? "bold" : "normal",
-                  color: textColor,
-                }}
-              >
+              <Link to="/experience" style={{ fontWeight: location.pathname === "/experience" ? "bold" : "normal", color: textColor }}>
                 Experience
+              </Link>
+              <Link to="/blog" style={{ fontWeight: location.pathname === "/blog" ? "bold" : "normal", color: textColor }}>
+                Blog
               </Link>
             </HStack>
 
-            {/* Avatar & Toggle */}
+            {/* Avatar & Theme Toggle */}
             <HStack spacing={3}>
               <IconButton
                 aria-label="Toggle dark mode"
@@ -76,11 +63,7 @@ const App = () => {
                 onClick={toggleColorMode}
                 variant="ghost"
               />
-              <Avatar
-                name="Brandon Johnson"
-                size="sm"
-                src="/avatar.png"
-              />
+              <Avatar name="Brandon Johnson" size="sm" src="/avatar.png" />
             </HStack>
           </HStack>
         </Box>
@@ -90,6 +73,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
 
         {/* Footer */}
@@ -99,37 +83,14 @@ const App = () => {
             © {new Date().getFullYear()} Brandon Johnson • Built with React + Chakra UI
           </Text>
           <HStack spacing={4} justify="center">
-            <a
-              href="https://github.com/branjohnson2305"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconButton
-                icon={<i className="fab fa-github" />}
-                aria-label="GitHub"
-                variant="ghost"
-                size="sm"
-              />
+            <a href="https://github.com/bjohnsonascte" target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<i className="fab fa-github" />} aria-label="GitHub" variant="ghost" size="sm" />
             </a>
-            <a
-              href="https://www.linkedin.com/in/branjohnson2305"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconButton
-                icon={<i className="fab fa-linkedin" />}
-                aria-label="LinkedIn"
-                variant="ghost"
-                size="sm"
-              />
+            <a href="https://www.linkedin.com/in/brandon-johnson-a32ab0224/" target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<i className="fab fa-linkedin" />} aria-label="LinkedIn" variant="ghost" size="sm" />
             </a>
             <a href="mailto:branjohnson2305@gmail.com">
-              <IconButton
-                icon={<i className="fas fa-envelope" />}
-                aria-label="Email"
-                variant="ghost"
-                size="sm"
-              />
+              <IconButton icon={<i className="fas fa-envelope" />} aria-label="Email" variant="ghost" size="sm" />
             </a>
           </HStack>
         </Box>

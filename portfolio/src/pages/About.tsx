@@ -3,10 +3,13 @@ import {
     Box,
     Heading,
     Text,
+    Button,
+    Icon,
     useColorModeValue,
-    VStack,
   } from "@chakra-ui/react";
+  import { FaDownload } from "react-icons/fa";
   import GitHubCalendar from "react-github-calendar";
+  import ResumeModal from "../components/ResumeModal";
   
   const About = () => {
     const textColor = useColorModeValue("gray.700", "gray.200");
@@ -22,6 +25,23 @@ import {
           cybersecurity learning paths.
         </Text>
   
+        {/* Download Resume Button */}
+        <Heading size="md" mb={2} color={textColor}>
+          Resume
+        </Heading>
+        <Button
+          as="a"
+          href="/Brandon_Johnson_Resume.pdf"
+          download
+          leftIcon={<Icon as={FaDownload} />}
+          colorScheme="teal"
+          variant="solid"
+          mb={8}
+        >
+          View My Resume
+        </Button>
+  
+        {/* GitHub Contributions */}
         <Heading size="md" mb={4} color={textColor}>
           GitHub Contributions
         </Heading>
