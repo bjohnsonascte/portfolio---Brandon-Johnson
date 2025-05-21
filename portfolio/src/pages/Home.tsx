@@ -1,5 +1,6 @@
 // src/pages/Home.tsx
 import {
+  Avatar,
   Box,
   Heading,
   Text,
@@ -17,6 +18,7 @@ import {
   SkeletonText,
   SkeletonCircle,
   Skeleton,
+  Flex,
 } from "@chakra-ui/react";
 import {
   FaReact,
@@ -35,7 +37,6 @@ import {
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
-
 const techIcons = [
   { label: "React", icon: FaReact },
   { label: "Docker", icon: FaDocker },
@@ -48,13 +49,6 @@ const techIcons = [
   { label: "VMware", icon: SiVmware },
   { label: "Git", icon: FaGitAlt },
 ];
-
-
-<Helmet>
-  <title>Brandon Johnson | Cyber Range Developer</title>
-  <meta name="description" content="Cybersecurity educator creating red/blue team labs and training simulations." />
-</Helmet>
-
 
 const projects = [
   {
@@ -84,7 +78,6 @@ const Home = () => {
   const textColor = useColorModeValue("gray.700", "gray.200");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedProject, setSelectedProject] = useState(projects[0]);
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -98,13 +91,40 @@ const Home = () => {
   };
 
   return (
-    <Box>
-      <Heading size="2xl" mb={2} color={textColor}>
-        Brandon Johnson
-      </Heading>
-      <Text fontSize="lg" mb={6} color={textColor}>
-        Cyber Range Developer • Red Team Builder
-      </Text>
+    <Box px={{ base: 4, md: 12 }} py={8}>
+      <Helmet>
+        <title>Brandon Johnson | Cyber Range Developer</title>
+        <meta
+          name="description"
+          content="Cybersecurity educator creating red/blue team labs and training simulations."
+        />
+      </Helmet>
+
+      <Flex
+        align="center"
+        justify={{ base: "center", md: "space-between" }}
+        direction={{ base: "column", md: "row" }}
+        mb={6}
+      >
+        <Box textAlign={{ base: "center", md: "left" }}>
+          <Heading size="2xl" mb={2} color={textColor}>
+            Brandon Johnson
+          </Heading>
+          <Text fontSize="lg" color={textColor}>
+            Cyber Range Developer • Red Team Builder
+          </Text>
+        </Box>
+
+        <Avatar
+          name="Brandon Johnson"
+          size="xl"
+          src="/profile.jpg"
+          mt={{ base: 4, md: 0 }}
+          ml={{ base: 0, md: 6 }}
+          border="2px solid"
+          borderColor={useColorModeValue("gray.300", "gray.600")}
+        />
+      </Flex>
 
       <Heading size="lg" mb={2} color={textColor}>
         About Me
@@ -140,46 +160,45 @@ const Home = () => {
         Featured Projects
       </Heading>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mb={10}>
-  {isLoading
-    ? Array.from({ length: 4 }).map((_, i) => (
-        <Box
-          key={i}
-          p={6}
-          borderWidth="1px"
-          borderRadius="lg"
-          shadow="md"
-          bg={cardBg}
-        >
-          <Skeleton height="24px" width="60%" mb={3} />
-          <SkeletonText mt="2" noOfLines={3} spacing="3" />
-        </Box>
-      ))
-    : projects.map((project, i) => (
-        <Box
-          key={i}
-          p={6}
-          borderWidth="1px"
-          borderRadius="lg"
-          shadow="md"
-          bg={cardBg}
-          cursor="pointer"
-          _hover={{
-            transform: "scale(1.03)",
-            boxShadow: "lg",
-            transition: "0.2s ease-in-out",
-          }}
-          onClick={() => handleCardClick(project)}
-        >
-          <VStack align="start" spacing={2}>
-            <Heading size="md">{project.title}</Heading>
-            <Text color={textColor} noOfLines={2}>
-              {project.description}
-            </Text>
-          </VStack>
-        </Box>
-      ))}
-</SimpleGrid>
-
+        {isLoading
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <Box
+                key={i}
+                p={6}
+                borderWidth="1px"
+                borderRadius="lg"
+                shadow="md"
+                bg={cardBg}
+              >
+                <Skeleton height="24px" width="60%" mb={3} />
+                <SkeletonText mt="2" noOfLines={3} spacing="3" />
+              </Box>
+            ))
+          : projects.map((project, i) => (
+              <Box
+                key={i}
+                p={6}
+                borderWidth="1px"
+                borderRadius="lg"
+                shadow="md"
+                bg={cardBg}
+                cursor="pointer"
+                _hover={{
+                  transform: "scale(1.03)",
+                  boxShadow: "lg",
+                  transition: "0.2s ease-in-out",
+                }}
+                onClick={() => handleCardClick(project)}
+              >
+                <VStack align="start" spacing={2}>
+                  <Heading size="md">{project.title}</Heading>
+                  <Text color={textColor} noOfLines={2}>
+                    {project.description}
+                  </Text>
+                </VStack>
+              </Box>
+            ))}
+      </SimpleGrid>
 
       {/* Modal for Project Details */}
       <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
